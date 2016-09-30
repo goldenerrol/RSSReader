@@ -1,4 +1,4 @@
-# CBC RSS Reader
+# CBC RSS Reader for iOS 9
 
 # Includes:
 Refresh  
