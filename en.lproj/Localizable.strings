@@ -6,4 +6,7 @@
   Copyright © 2016 Daniel Goldberg. All rights reserved.
 */
 
+"MAIN_HEADER" = "CBC RSS Reader";
 "WEBVIEW_HEADER" = "CBC Headline News";
+"COULD_NOT_CONNECT" = "Could not load news, please restart the app and try again";
+"NO_NETWORK" = "Please make sure you are connected to the internet and then restart the app";

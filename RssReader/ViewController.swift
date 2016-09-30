@@ -23,31 +23,50 @@ class ViewController: UIViewController, UITableViewDelegate, NSXMLParserDelegate
     var imageURL = String()
     var link = String()
     
+    var alertMessage = ""
+    
     // Create XML parser
     var parser: NSXMLParser!
     
     let rssFeed = NSURL(string: "http://www.cbc.ca/cmlink/rss-topstories")!
+    
+    // Refresh variable
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(ViewController.handleRefresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        
+        return refreshControl
+    }()
     
     // Webview Controls
     @IBOutlet var viewWebViewContainer: UIView!
     @IBOutlet var viewWebView: UIWebView!
     
     @IBOutlet var lblWebview: UINavigationItem!
-    // Hide webview
+    
     @IBAction func btnExitWebview(sender: AnyObject) {
+        
+        // Clear the webview
+        let blankURL = "about:blank"
+        UIWebView.loadRequest(viewWebView)(NSURLRequest(URL: NSURL(string:blankURL)!))
+        
         viewWebViewContainer.hidden = true
     }
-    // End Webview Controls
     
+    @IBOutlet var lblTitleMain: UINavigationItem!
     @IBOutlet var storyTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //Refresh Control
+        self.storyTableView.addSubview(self.refreshControl)
+        
         // set default language
-        self.language = "en"
+        self.language = NSLocale.currentLocale().objectForKey(NSLocaleLanguageCode)! as? String
         // fetch string from localizable.strings
         // futureproofing for multiple languages
+        lblTitleMain.title = "MAIN_HEADER".localized(self.language!)
         lblWebview.title = "WEBVIEW_HEADER".localized(self.language!)
         
         //fetch RSS data
@@ -55,10 +74,30 @@ class ViewController: UIViewController, UITableViewDelegate, NSXMLParserDelegate
     }
     
     func fetchData() {
-        // Load RSS feed/data into parser
-        parser = NSXMLParser(contentsOfURL:(rssFeed))!
-        self.parser.delegate = self
-        self.parser.parse()
+        
+        if !Reachability.isConnectedToNetwork() {
+            dispatch_async(dispatch_get_main_queue(), {
+                self.alertMessage = "NO_NETWORK".localized(self.language!)
+                self.displayAlert(self.alertMessage)
+            })
+        } else {
+            // Load RSS feed/data into parser
+            parser = NSXMLParser(contentsOfURL:(rssFeed))!
+            self.parser.delegate = self
+            
+            let success:Bool = parser.parse()
+            
+            if success {
+                print("connection success!")
+            } else {
+                dispatch_async(dispatch_get_main_queue(), {
+                    self.alertMessage = "COULD_NOT_CONNECT".localized(self.language!)
+                    self.displayAlert(self.alertMessage)
+                })
+            }
+        }
+        // if refreshing, end refresh
+        self.refreshControl.endRefreshing()
     }
     
     func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
@@ -203,12 +242,19 @@ class ViewController: UIViewController, UITableViewDelegate, NSXMLParserDelegate
         
         return url
     }
+    
+    func handleRefresh(refreshControl: UIRefreshControl) {
+        //On refresh, refetch 
+        fetchData()
+    }
+    
+    func displayAlert(alertMessage: String) {
+        let alert = UIAlertController(title: nil, message: alertMessage, preferredStyle: UIAlertControllerStyle.Alert)
+        self.presentViewController(alert, animated: true, completion: nil)
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-
-
 }
 
