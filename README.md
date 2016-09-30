@@ -1,6 +1,4 @@
-# RSSReader
-
-# CBC RSS Reader for Playster
+# CBC RSS Reader
 
 # Includes:
 Refresh  
