@@ -15,6 +15,9 @@
 		C72D18EE1D9D998D004ADC68 /* RssReaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D18ED1D9D998D004ADC68 /* RssReaderTests.swift */; };
 		C72D18F91D9D998D004ADC68 /* RssReaderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D18F81D9D998D004ADC68 /* RssReaderUITests.swift */; };
 		C72D19071D9DA4EF004ADC68 /* StoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D19061D9DA4EF004ADC68 /* StoryCell.swift */; };
+		C72D19091D9DAE52004ADC68 /* NewsPiece.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D19081D9DAE52004ADC68 /* NewsPiece.swift */; };
+		C72D190E1D9DE758004ADC68 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = C72D19101D9DE758004ADC68 /* Localizable.strings */; };
+		C72D19121D9DE7B4004ADC68 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C72D19111D9DE7B4004ADC68 /* StringExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		C72D18F81D9D998D004ADC68 /* RssReaderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RssReaderUITests.swift; sourceTree = "<group>"; };
 		C72D18FA1D9D998D004ADC68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C72D19061D9DA4EF004ADC68 /* StoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryCell.swift; sourceTree = "<group>"; };
+		C72D19081D9DAE52004ADC68 /* NewsPiece.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPiece.swift; sourceTree = "<group>"; };
+		C72D190F1D9DE758004ADC68 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		C72D19111D9DE7B4004ADC68 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +86,8 @@
 			isa = PBXGroup;
 			children = (
 				C72D18D71D9D998D004ADC68 /* RssReader */,
+				C72D19101D9DE758004ADC68 /* Localizable.strings */,
+				C72D19111D9DE7B4004ADC68 /* StringExtension.swift */,
 				C72D18EC1D9D998D004ADC68 /* RssReaderTests */,
 				C72D18F71D9D998D004ADC68 /* RssReaderUITests */,
 				C72D18D61D9D998D004ADC68 /* Products */,
@@ -102,6 +110,7 @@
 				C72D18D81D9D998D004ADC68 /* AppDelegate.swift */,
 				C72D18DA1D9D998D004ADC68 /* ViewController.swift */,
 				C72D18DC1D9D998D004ADC68 /* Main.storyboard */,
+				C72D19081D9DAE52004ADC68 /* NewsPiece.swift */,
 				C72D18DF1D9D998D004ADC68 /* Assets.xcassets */,
 				C72D18E11D9D998D004ADC68 /* LaunchScreen.storyboard */,
 				C72D18E41D9D998D004ADC68 /* Info.plist */,
@@ -233,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C72D18E31D9D998D004ADC68 /* LaunchScreen.storyboard in Resources */,
+				C72D190E1D9DE758004ADC68 /* Localizable.strings in Resources */,
 				C72D18E01D9D998D004ADC68 /* Assets.xcassets in Resources */,
 				C72D18DE1D9D998D004ADC68 /* Main.storyboard in Resources */,
 			);
@@ -260,6 +270,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C72D18DB1D9D998D004ADC68 /* ViewController.swift in Sources */,
+				C72D19091D9DAE52004ADC68 /* NewsPiece.swift in Sources */,
+				C72D19121D9DE7B4004ADC68 /* StringExtension.swift in Sources */,
 				C72D18D91D9D998D004ADC68 /* AppDelegate.swift in Sources */,
 				C72D19071D9DA4EF004ADC68 /* StoryCell.swift in Sources */,
 			);
@@ -311,6 +323,14 @@
 				C72D18E21D9D998D004ADC68 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		C72D19101D9DE758004ADC68 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C72D190F1D9DE758004ADC68 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

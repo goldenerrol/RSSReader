@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  RssReader
 //
-//  Created by Libertas Education on 2016-09-29.
+//  Created by Daniel Goldberg on 2016-09-29.
 //  Copyright © 2016 Daniel Goldberg. All rights reserved.
 //
 
